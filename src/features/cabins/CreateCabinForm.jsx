@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
-import { createEditCabin } from "../../services/apiCabins";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import styled from "styled-components";
 
 import Input from "../../ui/Input";
@@ -8,7 +7,7 @@ import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
-import toast from "react-hot-toast";
+
 import Spinner from "../../ui/Spinner";
 import { useCreateCain } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
@@ -70,6 +69,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
         {
           onSuccess: () => {
             reset();
+            onCloseModal?.();
           },
         }
       );
