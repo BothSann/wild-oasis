@@ -34,8 +34,8 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
-  booking: {
+function BookingRow({ booking }) {
+  const {
     id: bookingId,
     created_at,
     startDate,
@@ -44,10 +44,13 @@ function BookingRow({
     numGuests,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
-  },
-}) {
+    guests,
+    cabins,
+  } = booking;
+
+  const guestName = guests?.fullName || "Unknown Guest";
+  const email = guests?.email || "No email";
+  const cabinName = cabins?.name || "Unknown Cabin";
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
